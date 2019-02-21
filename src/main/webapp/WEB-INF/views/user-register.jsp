@@ -13,7 +13,7 @@
 
 	<h2>Register as a Regular User</h2>
 
-	<form action="/user-welcome">
+	<form action="/user-welcome" method="post">
 
 		<table>
 
@@ -45,7 +45,7 @@
 				type="password" required
 				pattern="^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" />
 			<tr>
-			<label>Credit Card # (optional) </label> <input name="creditcardnumber"
+			<label>Credit Card # (optional) </label> <input name="creditcardnumber" required
 				pattern="(\d{16})*" minlength ="16" maxlength="16"/>
 			</tr>
 		</table>

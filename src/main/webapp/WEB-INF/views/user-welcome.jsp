@@ -15,7 +15,5 @@
 			Hello ${ firstname }, you are registered. Return <a href="/">home</a>.
 		</p>
 
-	
-	
 </body>
 </html>

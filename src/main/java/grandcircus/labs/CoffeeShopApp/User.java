@@ -1,7 +1,20 @@
 package grandcircus.labs.CoffeeShopApp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//Mark all entity classes with @Entity so that Hibernate knows about them.
+@Entity
+@Table(name="csusers") // name of SQL table
 public class User {
 	
+	// Marks the ID as the Primary Key (PK), and designates that it is auto-generated & auto-incremented -- MUST HAVE THESE 2 ANNOTATIONS
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -11,11 +24,11 @@ public class User {
 	private String creditcardnumber;
 	private boolean requestmail = true;
 	
-	public User () {
-	}
+	public User () {}
 
-	public User(String firstname, String lastname, String email, int age, String password,
+	public User(Long id, String firstname, String lastname, String email, int age, String password,
 			String phonenumber, String creditcardnumber, boolean requestmail) {
+		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
@@ -24,6 +37,27 @@ public class User {
 		this.phonenumber = phonenumber;
 		this.creditcardnumber = creditcardnumber;
 		this.requestmail = requestmail;
+	}
+
+	public User(String firstname, String lastname, String email, int age, String password,
+			String phonenumber, String creditcardnumber, boolean requestmail) {
+//		this.id = id;  Make one constructor WITH id and one WITHOUT id
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.age = age;
+		this.password = password;
+		this.phonenumber = phonenumber;
+		this.creditcardnumber = creditcardnumber;
+		this.requestmail = requestmail;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstname() {
@@ -88,6 +122,13 @@ public class User {
 
 	public void setRequestmail(boolean requestmail) {
 		this.requestmail = requestmail;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", age="
+				+ age + ", password=" + password + ", phonenumber=" + phonenumber + ", creditcardnumber="
+				+ creditcardnumber + ", requestmail=" + requestmail + "]";
 	}
 	
 	
