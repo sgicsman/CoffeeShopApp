@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home</title>
+<title>Admin</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
@@ -29,14 +29,24 @@
 				<tr>
 					<td>${menu.name}</td>
 					<td>${menu.description}</td>
-					<td>${menu.price}</td>	
+					<td>${menu.price}</td>
+					
+					<td>
+						<a href="/item/update?id=${ menu.id }" >Edit</a>
+						&nbsp;  <!-- this puts space between the elements -->
+						&nbsp;
+						<a href="/item/delete?id=${ menu.id }" >Delete</a>
+					</td>
+					
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>	
+	</div>
+	
 			
-		<a class="btn btn-secondary" href="/admin">Administrator</a>
+		<a class="btn btn-secondary" href="/item/create">Add an item</a>
+	
 	
 </body>
 </html>

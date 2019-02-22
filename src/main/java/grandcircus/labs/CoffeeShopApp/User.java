@@ -24,7 +24,7 @@ public class User {
 	private String creditcardnumber;
 	private boolean requestmail = true;
 	
-	public User () {}
+	public User () {}  //ALWAYS include a no-args constructor
 
 	public User(Long id, String firstname, String lastname, String email, int age, String password,
 			String phonenumber, String creditcardnumber, boolean requestmail) {
