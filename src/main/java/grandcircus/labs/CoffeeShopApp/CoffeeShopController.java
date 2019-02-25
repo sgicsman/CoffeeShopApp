@@ -2,12 +2,15 @@ package grandcircus.labs.CoffeeShopApp;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import grandcircus.labs.CoffeeShopApp.dao.ItemsDao;
@@ -26,6 +29,13 @@ public class CoffeeShopController {
 	@RequestMapping("/")
 	public ModelAndView showHome() {
 		ModelAndView mav = new ModelAndView("index");
+		return mav;
+	}
+	
+	
+	@RequestMapping("/showMenu")
+	public ModelAndView showMenu() {
+		ModelAndView mav = new ModelAndView("showMenu");
 		List<Item> coffeeShopItems = itemsDao.findAll();
 		mav.addObject("menuItems", coffeeShopItems); // "menuItems" == <c:forEach var="menu" items="${menuItems}">
 														// -->index.jsp
@@ -35,22 +45,38 @@ public class CoffeeShopController {
 //		return new ModelAndView("index", "menuItems", coffeeShopItems);
 //		  ABOVE^^ is shortcut -- works ONLY when adding only ONE value to the model		
 
-	// Do you want to register? -->adds User to list of Coffee Shop Users
+	// Do you want to register? -->adds User to list of Coffee Shop Users + @SessionAttribute = gets item from session
 	@RequestMapping("/user-register")
-	public ModelAndView registerUser() {
-
-		ModelAndView mav = new ModelAndView("user-register");
-		return mav;
+	public ModelAndView registerUser(@SessionAttribute(name="profile", required=false) User csuser) {
+		return new ModelAndView("user-register", "user", csuser);
 	}
+	
+//  old version, before session setting	
+//	@RequestMapping("/user-register")
+//		public ModelAndView registerUser() {
+//		ModelAndView mav = new ModelAndView("user-register");
+//		return mav;
+//	}
 
-	@PostMapping("/user-welcome") // Adds the user register information submitted to the csusers database + displays greeting
-	public ModelAndView addSubmit(User csuser) {
-
+// Adds the user register information submitted to the csusers database + displays greeting
+// Use HttpSession to set an attribute on the session
+	@PostMapping("/user-register")
+	public ModelAndView addNewCSUser(User csuser, HttpSession session) {
+		session.setAttribute("profile", csuser);
 		csusersDao.create(csuser);
-		ModelAndView mav = new ModelAndView("user-welcome");
-		mav.addObject("firstname", csuser.getFirstname());
+		ModelAndView mav = new ModelAndView("redirect:/");
 		return mav;
 	}
+
+//  old version, before session setting	
+//	@PostMapping("/user-register") // Adds the user register information submitted to the csusers database + displays greeting
+//	public ModelAndView addSubmit(User csuser) {
+//
+//		csusersDao.create(csuser);
+//		ModelAndView mav = new ModelAndView("user-welcome");
+//		mav.addObject("firstname", csuser.getFirstname());
+//		return mav;
+//	}
 
 	@RequestMapping("/admin") // same as index/home page + includes edit & delete buttons
 	public ModelAndView showAdminPage() {
@@ -82,13 +108,17 @@ public class CoffeeShopController {
 
 	@RequestMapping("/item/create")
 	public ModelAndView showCreateForm() {
-		return new ModelAndView("item-createForm", "title", "Add an Item");
+		return new ModelAndView("item-createForm", "title", "Add an Item"); 
 	}
 
 	@PostMapping("/item/create")
-	public ModelAndView submitCreateForm(Item item) {
-		itemsDao.create(item);
-		return new ModelAndView("redirect:/admin");
+	public ModelAndView submitCreateForm(Item item, @RequestParam("name") String name) {
+		
+		if (itemsDao.findByName(name).size() == 0) {
+			itemsDao.create(item);
+			return new ModelAndView("redirect:/admin");
+		} else {
+			return new ModelAndView("/itemExists", "existingItem", name);
+		}
 	}
-
 }

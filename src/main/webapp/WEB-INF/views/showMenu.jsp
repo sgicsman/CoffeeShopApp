@@ -5,15 +5,22 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin</title>
+<title>Home</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
-<body>
-	<h1>Admin Page</h1>
+<!-- Note: theme comes directly from the session. -->
+<body class="theme-${ theme }">
+	<header>
+		<span>
+			Hello ${ profile.firstname } ${ profile.lastname } <!--  (stored in session) -->
+		</span>
+	</header>
+
+	<h1>Georg's Menu</h1>
 	
 	<ul>
 		
-		<li><a href="/">home</a></li>
+		<li><a href="/">Home</a></li>
 	</ul>
 	
 	<div class="container">
@@ -30,24 +37,14 @@
 					<td>${menu.name}</td>
 					<td>${menu.description}</td>
 					<td>${menu.quantity}</td>
-					<td>${menu.price}</td>
-					
-					<td>
-						<a href="/item/update?id=${ menu.id }" >Edit</a>
-						&nbsp;  <!-- this puts space between the elements -->
-						&nbsp;
-						<a class="confirmation" href="/item/delete?id=${ menu.id }" onclick="return confirm('Are you sure?')">Delete</a>
-					</td>
-					
+					<td>${menu.price}</td>	
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-	
+	</div>	
 			
-		<a class="btn btn-secondary" href="/item/create">Add an item</a>
-	
+		<a class="btn btn-secondary" href="/admin">Administrator</a>
 	
 </body>
 </html>

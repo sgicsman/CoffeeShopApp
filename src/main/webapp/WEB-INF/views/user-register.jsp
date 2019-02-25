@@ -11,9 +11,9 @@
 </head>
 <body>
 
-	<h2>Register as a Regular User</h2>
+	<h2>Register as a Preferred Member</h2>
 
-	<form action="/user-welcome" method="post">
+	<form action="/user-register" method="post">
 
 		<table>
 
@@ -21,19 +21,19 @@
 			<td><label for="firstname">First Name </label> <input
 				id="firstname" name="firstname" pattern="[A-Z]{1,2}[a-z]*" size="15" required /></td>
 
-			<td><label>Last Name </label> <input name="lastname"
+			<td><label>Last Name </label> <input name="lastname"  
 				pattern="[A-Z][a-z]+" size="15" required /></td>
 		</table>
 		
 		<table>
 
-			<td><label>Email </label> <input name="email" size="20" required
+			<td><label>Email </label> <input name="email"  size="20" required
 				type="email" /></td>
 			
-			<label>phone number </label><input type="tel" id="phone" name="phonenumber" size="10" 
+			<label>phone number </label><input type="tel" id="phone" name="phonenumber"  size="10" 
 				pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
 
-			<td><label>Age </label> <input name="age" type="number" min=18
+			<td><label>Age </label> <input name="age"  type="number" min=18
 				max=110 required maxlength="3" /></td>
 
 		</table>
@@ -41,11 +41,11 @@
 		<table>
 			<col>
 			<label>Password: minimum 8 characters, at least one
-					capital letter and one special character</label> <input name="password"
+					capital letter and one special character</label> <input name="password"  
 				type="password" required
 				pattern="^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" />
 			<tr>
-			<label>Credit Card # (optional) </label> <input name="creditcardnumber" required
+			<label>Credit Card # (optional) </label> <input name="creditcardnumber"  required
 				pattern="(\d{16})*" minlength ="16" maxlength="16"/>
 			</tr>
 		</table>
@@ -63,7 +63,7 @@
 
 		<br>
 		<button>Register</button>
-
+		<a href="/" class="btn btn-link">Cancel</a>
 
 	</form>
 

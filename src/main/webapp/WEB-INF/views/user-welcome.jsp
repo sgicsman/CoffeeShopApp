@@ -6,14 +6,16 @@
 <meta charset="ISO-8859-1">
 <title>Confirm User</title>
 </head>
-<body>
 
-	<h1> 
-	</h1>
-		<p>
-			<%-- Dot notation to access getters in Expression Language. --%>
-			Hello ${ firstname }, you are registered. Return <a href="/">home</a>.
-		</p>
-
+<!-- Note: theme comes directly from the session. -->
+<body class="theme-${ theme }">
+	<header>
+		<span>
+			Hello ${ profile.firstName } ${ profile.lastName } (stored in session)
+		</span>
+	</header>
+			
+		<a class="btn btn-secondary" href="/">Home</a>
+	
 </body>
 </html>

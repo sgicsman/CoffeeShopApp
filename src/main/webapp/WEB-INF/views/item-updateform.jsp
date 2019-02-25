@@ -36,7 +36,7 @@
 			    <input class="form-control" id="price" name="price" value="${item.price}" required>
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
-			<a href="/" class="btn btn-link">Cancel</a>
+			<a href="/admin" class="btn btn-link">Cancel</a>
 		</form>
 	</main>
 

@@ -19,7 +19,7 @@
 		
 		<!-- A form without an action submits back to the same URL, which is what we want here. -->
 		<form method="post">
-			<!-- We need to keep the ID and submit it with the form, but we don't want the user to have to see it. -->
+			<!-- We need to keep the ID and submit it with the form, but the user to have to see it. -->
 			<input type="hidden" name="id" value="${item.id}" />
 			
 			<div class="form-group">
