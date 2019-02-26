@@ -17,6 +17,7 @@ public class User {
 	private Long id;
 	private String firstname;
 	private String lastname;
+	private String userName;
 	private String email;
 	private int age;
 	private String password;
@@ -26,11 +27,12 @@ public class User {
 	
 	public User () {}  //ALWAYS include a no-args constructor
 
-	public User(Long id, String firstname, String lastname, String email, int age, String password,
+	public User(Long id, String firstname, String lastname, String userName, String email, int age, String password,
 			String phonenumber, String creditcardnumber, boolean requestmail) {
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.userName = userName;
 		this.email = email;
 		this.age = age;
 		this.password = password;
@@ -39,11 +41,12 @@ public class User {
 		this.requestmail = requestmail;
 	}
 
-	public User(String firstname, String lastname, String email, int age, String password,
+	public User(String firstname, String lastname, String userName, String email, int age, String password,
 			String phonenumber, String creditcardnumber, boolean requestmail) {
 //		this.id = id;  Make one constructor WITH id and one WITHOUT id
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.userName = userName;
 		this.email = email;
 		this.age = age;
 		this.password = password;
@@ -74,6 +77,14 @@ public class User {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getEmail() {

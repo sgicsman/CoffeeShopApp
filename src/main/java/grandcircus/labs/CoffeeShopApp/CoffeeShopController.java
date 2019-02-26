@@ -45,11 +45,12 @@ public class CoffeeShopController {
 //		return new ModelAndView("index", "menuItems", coffeeShopItems);
 //		  ABOVE^^ is shortcut -- works ONLY when adding only ONE value to the model		
 
+	// old version, before signup + authorization
 	// Do you want to register? -->adds User to list of Coffee Shop Users + @SessionAttribute = gets item from session
-	@RequestMapping("/user-register")
-	public ModelAndView registerUser(@SessionAttribute(name="profile", required=false) User csuser) {
-		return new ModelAndView("user-register", "user", csuser);
-	}
+//	@RequestMapping("/user-register")
+//	public ModelAndView registerUser(@SessionAttribute(name="profile", required=false) User csuser) {
+//		return new ModelAndView("user-register", "user", csuser);
+//	}
 	
 //  old version, before session setting	
 //	@RequestMapping("/user-register")
@@ -58,15 +59,16 @@ public class CoffeeShopController {
 //		return mav;
 //	}
 
-// Adds the user register information submitted to the csusers database + displays greeting
+	// old version, before signup + authorization
+	// Adds the user register information submitted to the csusers database + displays greeting
 // Use HttpSession to set an attribute on the session
-	@PostMapping("/user-register")
-	public ModelAndView addNewCSUser(User csuser, HttpSession session) {
-		session.setAttribute("profile", csuser);
-		csusersDao.create(csuser);
-		ModelAndView mav = new ModelAndView("redirect:/");
-		return mav;
-	}
+//	@PostMapping("/user-register")
+//	public ModelAndView addNewCSUser(User csuser, HttpSession session) {
+//		session.setAttribute("profile", csuser);
+//		csusersDao.create(csuser);
+//		ModelAndView mav = new ModelAndView("redirect:/");
+//		return mav;
+//	}
 
 //  old version, before session setting	
 //	@PostMapping("/user-register") // Adds the user register information submitted to the csusers database + displays greeting

@@ -25,6 +25,18 @@ public class UsersDao {
 	public User findById(Long id) {
 		return em.find(User.class, id);
 	}
+	
+	public User findByUserName(String username) {
+		try {
+			return em.createQuery("FROM User WHERE userName = :username", User.class)
+					.setParameter("username", username)
+					.getSingleResult();
+		} catch (NoResultException ex) {
+			// No user with that username found.
+			return null;
+		}
+	}
+	
 
 	public List<User> findByFirstName(String name) {
 		try {

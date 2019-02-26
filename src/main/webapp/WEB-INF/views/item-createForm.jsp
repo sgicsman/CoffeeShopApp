@@ -4,17 +4,19 @@
 <!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>${ title }</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/sketchy/bootstrap.min.css" />
 
-<!-- Custom CSS goes below Bootstrap CSS -->
-<!--  <link rel="stylesheet" href="/style.css" />  -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<meta charset="UTF-8">
+
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-T5jhQKMh96HMkXwqVMSjF3CmLcL1nT9//tCqu9By5XSdj7CwR0r+F3LTzUdfkkQf" crossorigin="anonymous">
+
+<title>${ title }</title>
 
 </head>
+
 <body>
 	<main class="container">
+	
 		<h1>${ title }</h1>
 		
 		<!-- A form without an action submits back to the same URL, which is what we want here. -->
@@ -48,6 +50,7 @@
 			
 			<a href="/admin" class="btn btn-link">Cancel</a>
 		</form>
+		
 	</main>
 </body>
 </html>
